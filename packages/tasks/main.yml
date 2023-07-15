@@ -1,2 +1,15 @@
 ---
 # tasks file for packages
+
+- name: Update all packages
+  apt:
+    update_cache: yes
+
+- name: Upgrade all packages
+  apt:
+    upgrade: yes
+
+- name: Install mc, htop, atop, ncdu
+  apt:
+    pkg: "{{packages}}"
+    state: present

@@ -1,2 +1,8 @@
 ---
 # vars file for packages
+
+packages:
+    - mc
+    - htop
+    - atop
+    - ncdu
