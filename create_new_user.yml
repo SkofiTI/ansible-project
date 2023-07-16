@@ -1,0 +1,5 @@
+- name: Create new user with SSH key
+  hosts: all
+  become: yes
+  roles:
+    - user

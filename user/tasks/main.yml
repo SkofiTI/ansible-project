@@ -1,2 +1,16 @@
 ---
 # tasks file for user
+
+- name: Add new user
+  user:
+    name: "{{ new_user_name }}"
+    password: "{{ new_user_password | password_hash('sha512') }}"
+    shell: "{{ new_user_shell }}"
+    createhome: yes
+    generate_ssh_key: yes
+
+- name: Add sudo permissions for new user
+  copy:
+    dest: "/etc/sudoers.d/{{ new_user_name }}"
+    content: "{{ new_user_name }} ALL=(ALL) NOPASSWD:ALL"
+    mode: '0440'

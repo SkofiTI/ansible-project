@@ -1,2 +1,6 @@
 ---
 # vars file for user
+
+new_user_name: "newuser"
+new_user_shell: "/bin/bash"
+new_user_password: ""

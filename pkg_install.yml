@@ -1,5 +1,4 @@
 - name: Update/Upgrade packages + install mc, htop, atop, ncdu
   hosts: all
-  gather_facts: yes
   roles:
     - packages
