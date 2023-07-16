@@ -1,0 +1,19 @@
+---
+# tasks file for ssh_cfg
+
+- name: Disable password authentication
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: '^(.*)PasswordAuthentication\s+yes'
+    line: 'PasswordAuthentication no'
+
+- name: Change SSH port
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: '^(.*)Port(.*)$'
+    line: 'Port {{ ssh_port  }}'
+
+- name: Change ansible port
+  set_fact:
+    ansible_port: '{{ ssh_port }}'
+  notify: restart sshd

@@ -1,0 +1,4 @@
+---
+# vars file for ssh_cfg
+
+ssh_port: 2222
