@@ -7,13 +7,20 @@
     regexp: '^(.*)PasswordAuthentication\s+yes'
     line: 'PasswordAuthentication no'
 
+
 - name: Change SSH port
   lineinfile:
     dest: /etc/ssh/sshd_config
     regexp: '^(.*)Port(.*)$'
     line: 'Port {{ ssh_port  }}'
 
+
+
 - name: Change ansible port
-  set_fact:
-    ansible_port: '{{ ssh_port }}'
+  lineinfile:
+    path: /root/ansible-project/inventory.yml
+    regexp: '^(\s*)ansible_port:(\s*)\d+$'
+    line: '\g<1>ansible_port: {{ ssh_port }}'
+    backrefs: yes
+    state: present
   notify: restart sshd
