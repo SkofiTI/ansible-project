@@ -1,0 +1,7 @@
+---
+# vars file for nginx
+
+nginx_port: 80
+server_name: "{{ ansible_default_ipv4.address }}"
+document_root: /var/www/html
+app_root: new_site

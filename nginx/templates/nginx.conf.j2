@@ -1,0 +1,22 @@
+user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+
+
+events {
+    worker_connections 768;
+}
+
+
+http {
+    charset utf-8;
+    server {
+        listen {{ nginx_port }};
+        server_name {{ server_name }};
+        
+        location / {
+            root {{ document_root }}/{{ app_root }};
+            index index.html;
+        }
+    }
+}
