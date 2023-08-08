@@ -1,9 +1,5 @@
 - name: Install and configurate nginx
   hosts: all
   become: yes
-  handlers:
-    - name: restart nginx
-      become: yes
-      service: name=nginx state=restarted
   roles:
     - nginx
